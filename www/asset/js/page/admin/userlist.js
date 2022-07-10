@@ -32,6 +32,7 @@ onCheck({
                 const el = document.querySelector('main')
 
                 const ul = document.createElement('ul')
+                ul.classList.add('userlist')
 
                 for (let u of response) {
                     const li = document.createElement('li')
@@ -44,6 +45,7 @@ onCheck({
                     if (u.id !== userId) {
                         const roleBtn = document.createElement('button')
                         roleBtn.textContent = u.role === 0 ? 'Rimuovi admin' : 'Rendi admin'
+                        roleBtn.classList.add('btn')
                         roleBtn.dataset.value = u.role
                         roleBtn.addEventListener('click', (e) => {
                             const val = parseInt(roleBtn.dataset.value)
@@ -55,6 +57,7 @@ onCheck({
                         const blockBtn = document.createElement('button')
                         blockBtn.textContent = u.blocked === 0 ? 'Blocca' : 'Sblocca'
                         blockBtn.dataset.value = u.blocked
+                        blockBtn.classList.add('btn')
                         blockBtn.addEventListener('click', (e) => {
                             const val = parseInt(blockBtn.dataset.value)
                             toggleBlock(u.id, val === 0 ? 1 : 0, () => {

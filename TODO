@@ -1,0 +1,9 @@
+Da intendersi, se non specificato, BE e FE
+ - Validazione Registrazione
+ - Validazione Nuovo/Modifica post
+ - Validazione Nuovo/Modifica commento
+ - Controlla responsive
+ - Relazione
+ - Miglioria di semplificazione: spostare il redirect onError della check nella funzione principale
+ - Pulizia utenti, commenti, post
+ - Creazione utenti, commenti e post di esempio

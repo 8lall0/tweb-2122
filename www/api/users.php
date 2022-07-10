@@ -10,9 +10,12 @@ try {
         throw new CustomHttpException("Unhautorized", 403);
     }
 
+    $sessionData = UserSession::getSession();
     $db = new DBConnection();
 
-    $q = "SELECT id, username, blocked, role FROM user";
+    $userId = $sessionData['id'];
+
+    $q = "SELECT id, username, blocked, role FROM user WHERE id <> " . $userId . ";";
     $response = $db->query($q)->fetchAll(PDO::FETCH_ASSOC);
 
     jsonArrayResponse($response);

@@ -47,7 +47,11 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
   text-decoration: none;
   text-align: center;
+  white-space: nowrap;
   transition: all 0.2s ease-in;
+}
+.btn[disabled] {
+  background-color: lightgray;
 }
 
 .btn:hover {
@@ -299,6 +303,23 @@ body {
 }
 .icon.trash {
   background-image: url("/asset/img/trash.png");
+}
+
+.userlist {
+  list-style: none;
+  margin-top: 15px;
+}
+.userlist li {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+}
+.userlist li:nth-child(odd) {
+  background-color: lightgreen;
+}
+.userlist li span {
+  display: block;
+  width: 100%;
 }
 
 .presentation {

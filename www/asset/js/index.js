@@ -36,16 +36,12 @@ const setLogged = () => {
         content.appendChild(newBtn)
     }
 
-    const retriever = new PostListRetriever({
+    new PostListRetriever({
         onLoad: onLoad
     })
 }
 
-const setNotLogged = () => {
-
-}
-
 onCheck({
     onLogged: setLogged,
-    onError: setNotLogged
+    onError: () => {}
 })

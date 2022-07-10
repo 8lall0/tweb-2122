@@ -1,0 +1,22 @@
+.userlist {
+  list-style: none;
+  margin-top: 15px;
+
+  & li {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    &:nth-child(odd) {
+      background-color: lightgreen;
+    }
+
+    &:nth-child(even) {
+
+    }
+
+    & span {
+      display: block;
+      width: 100%;
+    }
+  }
+}
