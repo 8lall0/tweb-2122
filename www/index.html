@@ -10,9 +10,10 @@
 <header class="header">
     <h1><a href="/">Treedit, il forum degli alberi!</a></h1>
     <nav class="nav">
-        <ul class="menu">
+        <ul class="menu opacity">
             <li><a href="/login" class="show-if-not-logged hidden">Login</a></li>
             <li><a href="/registration" class="show-if-not-logged hidden">Registrati</a></li>
+            <li><a href="/admin/userlist" class="show-if-admin hidden">Gestione utenti</a></li>
             <li><a href="/logout" class="show-if-logged hidden">Logout</a></li>
         </ul>
     </nav>
@@ -32,9 +33,9 @@
 </div>
 <div class="wrapper">
     <div class="wrapper-content">
-        <main id="content" class="post-list-container show-if-logged hidden"></main>
+        <main id="content" class="show-if-logged hidden"></main>
     </div>
 </div>
-<script type="module" src="asset/js/index.js"></script>
+<script type="module" src="/asset/js/index.js"></script>
 </body>
 </html>

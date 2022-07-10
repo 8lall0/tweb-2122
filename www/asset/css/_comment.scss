@@ -1,0 +1,23 @@
+.comment {
+  list-style: none;
+  padding: 5px;
+  padding-left: 10px;
+
+  p {
+    padding-bottom: 5px;
+  }
+
+  & aside, & footer {
+    font-size: 12px;
+  }
+
+  &__icons {
+    min-width: 41px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    border-right: 1px solid forestgreen;
+    padding: 0 10px;
+  }
+}

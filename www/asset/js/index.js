@@ -31,7 +31,7 @@ const setLogged = () => {
         content.appendChild(ul)
         const newBtn = document.createElement('a')
         newBtn.classList.add('btn')
-        newBtn.href = '/new'
+        newBtn.href = '/post/new'
         newBtn.textContent = 'Crea post'
         content.appendChild(newBtn)
     }
@@ -49,5 +49,3 @@ onCheck({
     onLogged: setLogged,
     onError: setNotLogged
 })
-
-document.body.classList.add('loaded')

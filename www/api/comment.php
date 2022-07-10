@@ -23,8 +23,7 @@ try {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
-            // TODO controlla cosa tirare fuori
-            $q = "SELECT c.id, u.username, c.content, c.created_at, c.modified_at FROM comment AS c,
+            $q = "SELECT c.id, u.username, c.id_user as userId, c.content, c.created_at, c.modified_at FROM comment AS c,
                user AS u WHERE c.id = ? AND c.id_user = u.id";
             $stmt = $db->prepare($q);
             $stmt->execute([$id]);
@@ -83,9 +82,16 @@ try {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
-            $q = "DELETE FROM comment WHERE id = ? AND id_user = ?";
-            $stmt = $db->prepare($q);
-            $stmt->execute([$id, $userId]);
+            $stmt = null;
+            if (UserSession::isAdmin()) {
+                $q = "DELETE FROM comment WHERE id = ?";
+                $stmt = $db->prepare($q);
+                $stmt->execute([$id]);
+            } else {
+                $q = "DELETE FROM comment WHERE id = ? AND id_user = ?";
+                $stmt = $db->prepare($q);
+                $stmt->execute([$id, $userId]);
+            }
 
             if ($stmt->rowCount() <= 0) {
                 throw new CustomHttpException("Bad Content", 403);

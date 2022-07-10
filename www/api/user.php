@@ -33,12 +33,11 @@ try {
             $blocked = $_PATCH['blocked'] ?? null;
             $role = $_PATCH['role'] ?? null;
 
-            if (empty($id)) {
+            if (empty($id) || (is_null($blocked) && is_null($role))) {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
             $stmt = null;
-
 
             if (!is_null($blocked)) {
                 $q = "UPDATE user SET blocked = ? WHERE id = ?";

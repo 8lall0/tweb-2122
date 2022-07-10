@@ -3,19 +3,27 @@
     margin: 10px 0;
   }
 
+  &__text {
+    padding: 5px;
+    padding-left: 10px;
+  }
+
   &__content {
     display: flex;
-    border: 2px solid green;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    transition: transform .1s ease-in;
+    flex-direction: column;
+    //transition: transform .1s ease-in;
+
+    & h4 {
+      margin-top: 15px;
+    }
   }
 
   &__main {
-    width: 80%;
+    display: flex;
+    font-size: 18px;
 
     header {
+      margin-top: 5px;
       font-size: 12px;
       font-style: italic;
     }
@@ -23,6 +31,10 @@
     header + p {
       margin-top: 10px;
     }
+  }
+
+  &__main + a {
+    margin-top: 15px;
   }
 
   &__main-actions {
@@ -34,5 +46,15 @@
     & .btn + .btn {
       margin-top: 10px;
     }
+  }
+
+  &__icons {
+    min-width: 41px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    border-right: 1px solid forestgreen;
+    padding: 0 10px;
   }
 }

@@ -12,5 +12,3 @@ onCheck({
         })
     }
 })
-
-document.body.classList.add('loaded')

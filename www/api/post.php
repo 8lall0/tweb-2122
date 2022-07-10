@@ -77,9 +77,17 @@ try {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
-            $q = "DELETE FROM post WHERE id = ? AND id_user = ?;";
-            $stmt = $db->prepare($q);
-            $stmt->execute([$id, $userId]);
+            $stmt = null;
+
+            if (UserSession::isAdmin()) {
+                $q = "DELETE FROM post WHERE id = ?";
+                $stmt = $db->prepare($q);
+                $stmt->execute([$id]);
+            } else {
+                $q = "DELETE FROM post WHERE id = ? AND id_user = ?;";
+                $stmt = $db->prepare($q);
+                $stmt->execute([$id, $userId]);
+            }
 
             if ($stmt->rowCount() <= 0) {
                 throw new CustomHttpException("Bad Content", 403);

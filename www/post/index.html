@@ -4,31 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/asset/css/style.css" rel="stylesheet">
-    <title>Pippo</title>
+    <title></title>
 </head>
 <body>
 <header class="header">
-    <h1><a href="/">Benvenuto a treedit, il forum dove parliamo di alberi!</a></h1>
+    <h1><a href="/">Treedit, il forum degli alberi!</a></h1>
     <nav class="nav">
-        <ul class="menu">
-            <li><a href="/logout" class="btn show-if-logged">Logout</a></li>
+        <ul class="menu opacity">
+            <li><a href="/admin/userlist" class="show-if-admin hidden">Gestione utenti</a></li>
+            <li><a href="/logout" class="show-if-logged hidden">Logout</a></li>
         </ul>
     </nav>
 </header>
-<main class="post">
-    <h2 class="post__title"></h2>
-    <div class="post__content" id="post-content">
-        <section class="post__main">
-            <header></header>
-            <p class="contenuto">
-            </p>
-        </section>
-        <aside class="post__main-actions">
-        </aside>
+<div class="wrapper opacity">
+    <div class="wrapper-content">
+        <main class="post">
+            <h2 class="post__title"></h2>
+            <div class="post__content" id="post-content">
+                <section class="post__main">
+                    <div class="post__icons"></div>
+                    <div class="post__text">
+                        <p class="contenuto">
+                        </p>
+                        <header></header>
+                    </div>
+                </section>
+                <a class="btn" id="answer-comment">Rispondi</a>
+                <h4>Commenti</h4>
+            </div>
+        </main>
+
     </div>
-</main>
-<hr>
-<a class="btn" id="answer-comment">Rispondi</a>
+</div>
 <script type="module" src="/asset/js/page/post/get.js"></script>
 </body>
 </html>

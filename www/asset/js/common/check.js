@@ -11,6 +11,12 @@ const onCheck = (conf) => {
             document.querySelectorAll('.show-if-logged').forEach(el => {
                 el.classList.remove('hidden')
             })
+
+            if (response.isAdmin) {
+                document.querySelectorAll('.show-if-admin').forEach(el => {
+                    el.classList.remove('hidden')
+                })
+            }
             conf.onLogged(response)
         }).catch(response => {
         document.body.classList.remove('logged')
@@ -19,6 +25,8 @@ const onCheck = (conf) => {
             el.classList.remove('hidden')
         })
         conf.onError(response)
+    }).finally(() => {
+        document.body.classList.add('loaded')
     })
 }
 
