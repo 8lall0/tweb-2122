@@ -1,0 +1,43 @@
+.post-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  & li {
+    position: relative;
+    border: 2px solid green;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    cursor: pointer;
+    transition: transform .1s ease-in;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  & li + li {
+    margin-top: 10px;
+  }
+
+  & a {
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: '';
+      display: block;
+    }
+  }
+
+  & + .btn {
+    margin-top: 15px;
+  }
+}

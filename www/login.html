@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <link href="/asset/css/style.css" rel="stylesheet">
+    <title>Pippo</title>
+</head>
+<body>
+<header class="header">
+    <h1><a href="/">Benvenuto a treedit, il forum dove parliamo di alberi!</a></h1>
+    <nav class="nav">
+        <ul class="menu">
+            <li><a href="/registration" class="btn">Registrati</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="wrapper">
+    <div class="wrapper-content">
+        <main class="form-container" id="login">
+            <h2>Login</h2>
+            <form action="/api/login" method="post" class="form">
+                <div class="form__error"></div>
+                <label for="username">
+                    Username
+                </label>
+                <input id="username" type="text" name="username">
+                <label for="password">
+                    Password
+                </label>
+                <input id="password" type="password" name="password">
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<script src="/asset/js/login.js" type="module"></script>
+</body>
+</html>

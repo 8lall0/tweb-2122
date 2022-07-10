@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <link href="/asset/css/style.css" rel="stylesheet">
+    <title>Pippo</title>
+</head>
+<body>
+<header class="header">
+    <h1><a href="/">Benvenuto a treedit, il forum dove parliamo di alberi!</a></h1>
+    <nav class="nav">
+        <ul class="menu">
+            <li><a href="/login" class="btn">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="wrapper">
+    <div class="wrapper-content">
+        <main id="register" class="form-container">
+            <h2>Registrati</h2>
+            <form action="/api/register" method="post" class="form" id="form-register">
+                <div class="form__error"></div>
+                <label for="username">
+                    Username
+                </label>
+                <input id="username" type="text" name="username">
+                <label for="password">
+                    Password
+                </label>
+                <input id="password" type="password" name="password">
+                <label for="password_repeat">
+                    Ripeti Password
+                </label>
+                <input type="text" name="password_repeat" id="password_repeat">
+                <button type="submit" class="btn" disabled>Registrati</button>
+            </form>
+        </main>
+
+    </div>
+</div>
+
+<script src="/asset/js/registration.js" type="module"></script>
+</body>
+</html>

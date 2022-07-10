@@ -1,0 +1,42 @@
+.form-container {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  input, textarea {
+    display: inline-block;
+    border: 2px solid darkolivegreen;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    transition: border-color .2s ease-in;
+  }
+
+  input + label, button {
+    margin-top: 20px;
+  }
+
+  input, textarea, button {
+    font-family: inherit;
+  }
+
+  input.error, textarea.error {
+    border-color: red;
+  }
+
+  &__error {
+    display: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: red;
+    padding: 10px 0;
+  }
+
+  &.error &__error {
+    display: block;
+  }
+}

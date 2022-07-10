@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/asset/css/style.css" rel="stylesheet">
+    <title>Treedit - Il forum degli alberi</title>
+</head>
+<body>
+<header class="header">
+    <h1><a href="/">Treedit, il forum degli alberi!</a></h1>
+    <nav class="nav">
+        <ul class="menu">
+            <li><a href="/login" class="show-if-not-logged hidden">Login</a></li>
+            <li><a href="/registration" class="show-if-not-logged hidden">Registrati</a></li>
+            <li><a href="/logout" class="show-if-logged hidden">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="wrapper show-if-not-logged hidden">
+    <div class="wrapper-content">
+        <main class="presentation">
+            <h2>
+                Cosa è Treedit
+            </h2>
+            <p>Treedit è il forum dove poter parlare di alberi e di tutto ciò che riguarda i nostri amici verdi in generale.</p>
+            <p>Iscriviti subito per poter iniziare a scrivere e leggere altri utenti dal resto del mondo!</p>
+            <img src="/asset/img/htf.png">
+            <p>Siete pregati di mantenere un linguaggio consono e rispettoso :)</p>
+        </main>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="wrapper-content">
+        <main id="content" class="post-list-container show-if-logged hidden"></main>
+    </div>
+</div>
+<script type="module" src="asset/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/asset/css/style.css" rel="stylesheet">
+    <title>Modifica post</title>
+</head>
+<body>
+<header class="header">
+    <h1><a href="/">Benvenuto a treedit, il forum dove parliamo di alberi!</a></h1>
+    <nav class="nav">
+        <ul class="menu"></ul>
+    </nav>
+</header>
+<div class="wrapper">
+    <div class="wrapper-content">
+        <main class="form-container post-new">
+            <div class="form__error"></div>
+            <h2>Inserisci nuovo post</h2>
+            <form action="/api/post" method="post" class="form" id="edit-post">
+                <label for="title">
+                    Titolo
+                </label>
+                <input type="text" name="title" id="title">
+                <label for="content">
+                    Testo
+                </label>
+                <textarea id="content" name="content"></textarea>
+                <input type="hidden" name="id">
+                <button type="submit" class="btn">Salva</button>
+            </form>
+        </main>
+    </div>
+</div>
+<script src="/asset/js/page/post/edit.js" type="module"></script>
+</body>
+</html>
