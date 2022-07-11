@@ -17,5 +17,4 @@ onCheck({
             isEdit: true
         })
     },
-    onError: () => {}//window.location.replace('/'),
 })

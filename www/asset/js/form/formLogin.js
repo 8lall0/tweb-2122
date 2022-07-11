@@ -34,6 +34,7 @@ class FormLogin extends AbstractForm {
                 window.location.replace('/');
             },
             onError: () => {
+                this._form.classList.add('error')
                 this._writeErrorToForm('Errore di login')
             }
         })

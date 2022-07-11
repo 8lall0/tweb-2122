@@ -42,6 +42,8 @@ try {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
+            $content = htmlspecialchars($content, ENT_QUOTES);
+
             $q = "INSERT INTO comment (id_user, id_post, content) VALUES (?, ?, ?);";
             $stmt = $db->prepare($q);
 
@@ -65,6 +67,8 @@ try {
             if (strlen($content) < 5) {
                 throw new CustomHttpException("Bad Content", 400);
             }
+
+            $content = htmlspecialchars($content, ENT_QUOTES);
 
             $q = "UPDATE comment SET content = ?, modified_at = ? WHERE id = ? AND id_user = ?";
             $stmt = $db->prepare($q);

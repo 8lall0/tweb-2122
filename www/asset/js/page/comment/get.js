@@ -33,5 +33,4 @@ onCheck({
             form: document.getElementById('comment')
         })
     },
-    onError: () => {}//window.location.replace('/'),
 })

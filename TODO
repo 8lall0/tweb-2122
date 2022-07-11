@@ -1,11 +1,13 @@
 Da intendersi, se non specificato, BE e FE
-
- - Validazione Nuovo/Modifica post
  - Controlla responsive
  - Relazione
- - Miglioria di semplificazione: spostare il redirect onError della check nella funzione principale
  - Pulizia utenti, commenti, post
  - Creazione utenti, commenti e post di esempio
 
+
  - Validazione Registrazione // FATTO
  - Validazione Nuovo/Modifica commento // FATTO
+ - Validazione Nuovo/Modifica post // FATTO
+ - Escape caratteri speciali in post e commento (BE) // FATTO
+ - Pagina 404 // FATTO
+ - Miglioria di semplificazione: spostare il redirect onError della check nella funzione principale // FATTO

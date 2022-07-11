@@ -1,7 +1,6 @@
 import {status} from "../common/status.js";
 
 class Post {
-    // TODO refactor in /form
     constructor(conf) {
         this._form = conf.form;
         this._ovverrideMethd = conf.overrideMethod ? conf.overrideMethod.toUpperCase() : null

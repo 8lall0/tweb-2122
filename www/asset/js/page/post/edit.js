@@ -1,7 +1,7 @@
 import {Post} from "../../models/post.js";
 import {QueryParams} from "../../common/queryParams.js";
 import {onCheck} from "../../common/check.js";
-import {PostRetriever} from "../../models/retriever/postRetriever.js";
+import {FormPost} from "../../form/formPost.js";
 
 onCheck({
     onLogged: () => {
@@ -12,23 +12,10 @@ onCheck({
             return
         }
 
-        form.querySelector('[name=id]').value = QueryParams.id
-
-        new PostRetriever({
-            id: QueryParams.id,
-            onLoad: (response) => {
-                form.querySelector('[name=title]').value = response.title
-                form.querySelector('[name=content]').value = response.content
-
-            }
-        })
-        new Post({
+        new FormPost({
             form: form,
-            overrideMethod: 'patch',
-            onPost: (response) => {
-                window.location.replace(`/post?id=${response.id}`);
-            },
+            isEdit: true,
+            postId: QueryParams.id,
         })
     },
-    onError: () => {}//window.location.replace('/'),
 })

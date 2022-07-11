@@ -141,7 +141,4 @@ onCheck({
         })
 
     },
-    onError: () => {
-        window.location.replace('/')
-    }
 })

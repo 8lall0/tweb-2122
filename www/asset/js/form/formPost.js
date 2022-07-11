@@ -1,30 +1,31 @@
 import {AbstractForm} from "./abstractForm.js";
-import {Comment} from "../models/comment.js";
-import {CommentRetriever} from "../models/retriever/commentRetriever.js";
+import {Post} from "../models/post.js";
+import {PostRetriever} from "../models/retriever/postRetriever.js";
 
-class FormComment extends AbstractForm {
+class FormPost extends AbstractForm {
     constructor(conf) {
         super();
         this._form = conf.form ?? null
         this._postId = conf.postId ?? null
-        this._commentId = conf.commentId ?? null
         this._isEdit = conf.isEdit ?? false
 
         this._fields = {
+            title: false,
             content: false,
         }
 
         this._proxy = this._setupProxy()
 
         const fields = {
+            title: this._form.querySelector('[name=title]'),
             content: this._form.querySelector('[name=content]'),
         }
 
         fields.content.addEventListener('blur', (e) => {
             const val = e.currentTarget.value
-            if (val.length < 5 && val.length > 0) {
+            if (val.length < 15 && val.length > 0) {
                 this._proxy.content = false;
-                this._writeErrorToField(e.currentTarget, 'Commento troppo corto')
+                this._writeErrorToField(e.currentTarget, 'Post troppo corto')
             } else if (val.length === 0) {
                 this._proxy.content = false;
                 this._removeErrorFromField(e.currentTarget)
@@ -34,26 +35,41 @@ class FormComment extends AbstractForm {
             }
         })
 
-        if (this._isEdit) {
-            new CommentRetriever({
-                id: this._commentId,
-                onLoad: (response) => {
-                    this._form.querySelector('[name=id]').value = this._commentId
-                    this._form.querySelector('[name=content]').value = response.content
-                    this._postId = parseInt(response.postId)
+        fields.title.addEventListener('blur', (e) => {
+            const val = e.currentTarget.value
+            if (val.length < 5 && val.length > 0) {
+                this._proxy.title = false;
+                this._writeErrorToField(e.currentTarget, 'Titolo troppo corto')
+            } else if (val.length === 0) {
+                this._proxy.title = false;
+                this._removeErrorFromField(e.currentTarget)
+            } else {
+                this._removeErrorFromField(e.currentTarget)
+                this._proxy.title = true;
+            }
+        })
 
+        if (this._isEdit) {
+            new PostRetriever({
+                id: this._postId,
+                onLoad: (response) => {
+                    this._form.querySelector('[name=title]').value = response.title
+                    this._form.querySelector('[name=content]').value = response.content
+                    this._form.querySelector('[name=id]').value = this._postId
+
+                    fields.title.focus()
+                    fields.title.blur()
                     fields.content.focus()
                     fields.content.blur()
                 }
             })
         }
 
-
-        new Comment({
+        new Post({
             form: this._form,
             overrideMethod: this._isEdit ? 'patch' : null,
-            onPost: () => {
-                window.location.replace(`/post?id=${this._postId}`)
+            onPost: (response) => {
+                window.location.replace(`/?id=${response.id}`);
             },
             onError: () => {
                 this._form.classList.add('error')
@@ -63,4 +79,4 @@ class FormComment extends AbstractForm {
     }
 }
 
-export {FormComment}
+export {FormPost}

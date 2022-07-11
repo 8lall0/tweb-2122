@@ -19,8 +19,7 @@
 <div class="wrapper">
     <div class="wrapper-content">
         <main class="form-container post-new">
-            <div class="form__error"></div>
-            <h2>Inserisci nuovo post</h2>
+            <h2>Modifica post</h2>
             <form action="/api/post" method="post" class="form" id="edit-post">
                 <label for="title">
                     Titolo
@@ -31,7 +30,7 @@
                 </label>
                 <textarea id="content" name="content"></textarea>
                 <input type="hidden" name="id">
-                <button type="submit" class="btn">Salva</button>
+                <button type="submit" class="btn" disabled>Salva</button>
             </form>
         </main>
     </div>

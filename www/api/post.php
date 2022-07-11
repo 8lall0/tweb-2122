@@ -29,12 +29,19 @@ try {
 
             break;
         case 'POST':
-            $title = $_POST['title'];
-            $content = $_POST['content'];
+            $title = $_POST['title'] ?? null;
+            $content = $_POST['content'] ?? null;
 
-            if (empty($title) || empty($content)) {
+            if (is_null($title) || is_null($content)) {
                 throw new CustomHttpException("Bad Content", 400);
             }
+
+            if (strlen($title) < 5 || strlen($content) < 15) {
+                throw new CustomHttpException("Bad Content", 400);
+            }
+
+            $title = htmlspecialchars($title, ENT_QUOTES);
+            $content = htmlspecialchars($content, ENT_QUOTES);
 
             $q = "INSERT INTO post (id_user, title, content) VALUES (?, ?, ?);";
             $stmt = $db->prepare($q);
@@ -50,12 +57,23 @@ try {
             break;
         case 'PATCH':
             $id = $_PATCH['id'];
-            $title = $_PATCH['title'];
-            $content = $_PATCH['content'];
+            $title = $_PATCH['title'] ?? null;
+            $content = $_PATCH['content'] ?? null;
 
-            if (empty($id) || empty($title) || empty($content)) {
+            if (empty($id)) {
                 throw new CustomHttpException("Bad Content", 400);
             }
+
+            if (is_null($title) || is_null($content)) {
+                throw new CustomHttpException("Bad Content", 400);
+            }
+
+            if (strlen($title) < 5 || strlen($content) < 15) {
+                throw new CustomHttpException("Bad Content", 400);
+            }
+
+            $title = htmlspecialchars($title, ENT_QUOTES);
+            $content = htmlspecialchars($content, ENT_QUOTES);
 
             $q = "UPDATE post SET title = ?, content = ?, modified_at = ? WHERE id = ? AND id_user = ?";
             $stmt = $db->prepare($q);

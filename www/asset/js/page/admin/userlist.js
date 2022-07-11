@@ -74,6 +74,5 @@ onCheck({
                 el.appendChild(ul)
             }
         })
-
     }
 })

@@ -13,5 +13,4 @@ onCheck({
             postId: QueryParams.postId,
         })
     },
-    onError: () => {}
 })

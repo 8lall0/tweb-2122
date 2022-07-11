@@ -24,7 +24,12 @@ const onCheck = (conf) => {
         document.querySelectorAll('.show-if-not-logged').forEach(el => {
             el.classList.remove('hidden')
         })
-        conf.onError(response)
+        if (conf.onError) {
+            conf.onError(response)
+        } else {
+            window.location.replace('/')
+        }
+
     }).finally(() => {
         document.body.classList.add('loaded')
     })

@@ -1,14 +1,12 @@
-import {Post} from "../../models/post.js";
 import {onCheck} from "../../common/check.js";
+import {FormPost} from "../../form/formPost.js";
 
 onCheck({
     onLogged: () => {
-        new Post({
-            form: document.querySelector('#new-post'),
-            onPost: (response) => {
-                window.location.replace(`/?id=${response.id}`);
-            },
+        const form = document.querySelector('#new-post')
+
+        new FormPost({
+            form: form,
         })
     },
-    onError: () => {}
 })
