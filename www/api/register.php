@@ -15,7 +15,7 @@ try {
         throw new CustomHttpException("Bad Request", 400);
     }
 
-    if (count($username) < 4) {
+    if (strlen($username) < 4) {
         throw new CustomHttpException("Bad Request", 400);
     }
 

@@ -34,7 +34,11 @@ try {
             $postId = $_POST['postId'] ?? null;
             $content = $_POST['content'] ?? null;
 
-            if (empty($content) || empty($postId)) {
+            if (is_null($content) || is_null($postId)) {
+                throw new CustomHttpException("Bad Content", 400);
+            }
+
+            if (strlen($content) < 5) {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
@@ -54,7 +58,11 @@ try {
             $id = $_PATCH['id'] ?? null;
             $content = $_PATCH['content'] ?? null;
 
-            if (empty($content) || empty($id)) {
+            if (is_null($content) || is_null($id)) {
+                throw new CustomHttpException("Bad Content", 400);
+            }
+
+            if (strlen($content) < 5) {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
@@ -76,9 +84,9 @@ try {
             $response = ['id' => $id, 'postId' => $result['id_post']];
             break;
         case 'DELETE':
-            $id = $_DELETE['id'];
+            $id = $_DELETE['id'] ?? null;
 
-            if (empty($id)) {
+            if (is_null($id)) {
                 throw new CustomHttpException("Bad Content", 400);
             }
 

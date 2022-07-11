@@ -1,7 +1,6 @@
-import {Comment} from "../../models/comment.js";
 import {QueryParams} from "../../common/queryParams.js";
 import {onCheck} from "../../common/check.js";
-import {CommentRetriever} from "../../models/retriever/commentRetriever.js";
+import {FormComment} from "../../form/formComment.js";
 
 onCheck({
     onLogged: () => {
@@ -12,20 +11,10 @@ onCheck({
             return
         }
 
-        new CommentRetriever({
-            id: QueryParams.id,
-            onLoad: (response) => {
-                form.querySelector('[name=id]').value = QueryParams.id
-                form.querySelector('[name=content]').value = response.content
-
-            }
-        })
-        new Comment({
+        new FormComment({
             form: form,
-            overrideMethod: 'patch',
-            onPost: (response) => {
-                window.location.replace(`/post?id=${response.postId}`);
-            },
+            postId: QueryParams.postId,
+            isEdit: true
         })
     },
     onError: () => {}//window.location.replace('/'),

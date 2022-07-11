@@ -28,14 +28,13 @@ class FormLogin extends AbstractForm {
             this._proxy.password = (val.length > 0)
         })
 
-        const errorContainer = this._form.querySelector('.form__error')
         new Login({
             form: this._form,
             onLogin: () => {
                 window.location.replace('/');
             },
             onError: () => {
-                errorContainer.textContent = 'Errore di login'
+                this._writeErrorToForm('Errore di login')
             }
         })
 
