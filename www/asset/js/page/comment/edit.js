@@ -13,7 +13,7 @@ onCheck({
 
         new FormComment({
             form: form,
-            postId: QueryParams.postId,
+            commentId: QueryParams.id,
             isEdit: true
         })
     },

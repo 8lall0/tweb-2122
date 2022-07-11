@@ -23,7 +23,7 @@ try {
                 throw new CustomHttpException("Bad Content", 400);
             }
 
-            $q = "SELECT c.id, u.username, c.id_user as userId, c.content, c.created_at, c.modified_at FROM comment AS c,
+            $q = "SELECT c.id, u.username, c.id_user as userId, c.id_post as postId, c.content, c.created_at, c.modified_at FROM comment AS c,
                user AS u WHERE c.id = ? AND c.id_user = u.id";
             $stmt = $db->prepare($q);
             $stmt->execute([$id]);

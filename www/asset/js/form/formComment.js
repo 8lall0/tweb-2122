@@ -5,8 +5,9 @@ import {CommentRetriever} from "../models/retriever/commentRetriever.js";
 class FormComment extends AbstractForm {
     constructor(conf) {
         super();
-        this._form = conf.form
-        this._postId = conf.postId
+        this._form = conf.form ?? null
+        this._postId = conf.postId ?? null
+        this._commentId = conf.commentId ?? null
         this._isEdit = conf.isEdit ?? false
 
         this._fields = {
@@ -33,13 +34,17 @@ class FormComment extends AbstractForm {
             }
         })
 
-        new CommentRetriever({
-            id: this._postId,
-            onLoad: (response) => {
-                this._form.querySelector('[name=id]').value = this._postId
-                this._form.querySelector('[name=content]').value = response.content
-            }
-        })
+        if (this._isEdit) {
+            new CommentRetriever({
+                id: this._commentId,
+                onLoad: (response) => {
+                    this._form.querySelector('[name=id]').value = this._commentId
+                    this._form.querySelector('[name=content]').value = response.content
+                    this._postId = parseInt(response.postId)
+                }
+            })
+        }
+
 
         new Comment({
             form: this._form,
