@@ -7,26 +7,35 @@ try {
         throw new CustomHttpException("Bad Request", 405);
     }
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $passwordRepeat = $_POST['password_repeat'];
+    $username = $_POST['username'] ?? null;
+    $password = $_POST['password'] ?? null;
+    $passwordRepeat = $_POST['password_repeat'] ?? null;
 
-    if (empty($username)) {
-        throw new CustomHttpException("Bad Username", 400);
+    if (is_null($username) || is_null($password) || is_null($passwordRepeat)) {
+        throw new CustomHttpException("Bad Request", 400);
     }
-    if (empty($password) || empty($passwordRepeat)) {
-        throw new CustomHttpException("Bad Password", 400);
+
+    if (count($username) < 4) {
+        throw new CustomHttpException("Bad Request", 400);
     }
+
+    foreach ($username as $testcase) {
+        if (!ctype_alnum($testcase)) {
+            throw new CustomHttpException("Bad Request", 400);
+        }
+    }
+
     if ($password !== $passwordRepeat) {
-        throw new CustomHttpException("Password not the same", 400);
+        throw new CustomHttpException("Bad Request", 400);
     }
 
     $db = new DBConnection();
 
-    $q = "SELECT username FROM user WHERE username = ? AND blocked = 0";
+    $q = "SELECT username FROM user WHERE username = ?";
     $stmt = $db->prepare($q);
     $stmt->execute([$username]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
     if ($result) {
         throw new CustomHttpException("Username already exists", 409);
     }
@@ -37,7 +46,7 @@ try {
 
     $id = $db->lastInsertId();
 
-    UserSession::setSession($id, $username, false);
+    UserSession::setSession($id, $username);
 
     $stmt = null;
 

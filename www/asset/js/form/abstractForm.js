@@ -2,6 +2,7 @@ class AbstractForm {
     constructor() {
         this._form = null;
         this._fields = null;
+        this._formError = null;
     }
 
     _setupProxy() {
@@ -31,6 +32,7 @@ class AbstractForm {
         const el = this._form.querySelector(`span[data-for=${element.id}]`)
         if (!el) {
             const span = document.createElement('span')
+            span.classList.add('form__field-error')
             span.textContent = msg
             span.dataset.for = element.id
             element.after(span)
@@ -45,6 +47,22 @@ class AbstractForm {
         if (el) {
             element.classList.remove('error')
             el.remove()
+        }
+    }
+
+    _writeErrorToForm(msg) {
+        if (this._formError === null) {
+            this._formError = document.createElement('div')
+            this._formError.classList.add('form__error')
+            this._form.insertBefore(this._formError, this._form.firstChild)
+        }
+
+        this._formError.textContent = msg
+    }
+
+    _removeErrorFromForm() {
+        if (this._formError !== null) {
+            this._formError.remove()
         }
     }
 

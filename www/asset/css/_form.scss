@@ -41,6 +41,12 @@
     padding: 10px 0;
   }
 
+  &__field-error {
+    font-size: 12px;
+    color: red;
+    padding-bottom: 5px;
+  }
+
   &.error &__error {
     display: block;
   }

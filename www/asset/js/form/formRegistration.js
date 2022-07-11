@@ -21,16 +21,17 @@ class FormRegistration extends AbstractForm {
         }
 
         function isValid(str) {
-            return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
+            const pattern = /[^\w]|_/g
+            return !(pattern.test(str));
         }
 
         fields.username.addEventListener('blur', (e) => {
             const val = e.currentTarget.value
             if (!isValid(val)) {
-                this._writeErrorToField(e.currentTarget, 'testo non valido')
+                this._writeErrorToField(e.currentTarget, 'Username non valido')
                 this._proxy.username = false;
             } else if (val.length <= 3 && val.length > 1) {
-                this._writeErrorToField(e.currentTarget, 'testo troppo corto')
+                this._writeErrorToField(e.currentTarget, 'Username troppo corto')
                 this._proxy.username = false;
             } else if (val.length === 0) {
                 this._proxy.username = false;
@@ -44,12 +45,16 @@ class FormRegistration extends AbstractForm {
         fields.password.addEventListener('blur', e => {
             const val = e.currentTarget.value
             if (val.length <= 3 && val.length > 1) {
-                this._writeErrorToField(e.currentTarget, 'password troppo corta')
+                this._writeErrorToField(e.currentTarget, 'Password troppo corta')
                 this._proxy.password = false;
             } else if (val.length === 0) {
                 this._removeErrorFromField(e.currentTarget)
                 this._proxy.password = false;
+                fields.passwordRepeat.focus()
+                fields.passwordRepeat.blur()
             } else {
+                fields.passwordRepeat.focus()
+                fields.passwordRepeat.blur()
                 this._removeErrorFromField(e.currentTarget)
                 this._proxy.password = true;
             }
@@ -59,16 +64,17 @@ class FormRegistration extends AbstractForm {
             const val = e.currentTarget.value
             const pwd = fields.password.value
 
-            if (val.length > 1 && val !== pwd || val.length === 0) {
+            if (val.length > 1 && val !== pwd) {
                 this._writeErrorToField(e.currentTarget, 'Le password non coincidono')
+                this._proxy.passwordRepeat = false;
+            } else if (val.length === 0) {
+                this._removeErrorFromField(e.currentTarget)
                 this._proxy.passwordRepeat = false;
             } else {
                 this._removeErrorFromField(e.currentTarget)
                 this._proxy.passwordRepeat = true;
             }
         })
-
-        const errorContainer = this._form.querySelector('.form__error')
 
         new Registration({
             form: this._form,
@@ -79,21 +85,16 @@ class FormRegistration extends AbstractForm {
                 this._form.classList.add('error')
                 if (status === 409) {
                     this._writeErrorToField(fields.username, 'Username già esistente')
-                } else if (status === 406) {
-                    // TODO ritorna 406 se password non valida, o analizza errore in ritorno per vedere se usrname o pwd non validi
-                    this._writeErrorToField(fields.password, 'Password non valida')
                 } else {
-                    errorContainer.textContent = 'Si è verificato un errore'
+                    this._writeErrorToForm('Si è verificato un errore')
                 }
             },
             onError: () => {
                 this._form.classList.add('error')
-                errorContainer.textContent = 'Si è verificato un errore'
+                this._writeErrorToForm('Si è verificato un errore')
             }
         })
     }
-
-
 }
 
 export {FormRegistration}

@@ -21,19 +21,18 @@
         <main id="register" class="form-container">
             <h2>Registrati</h2>
             <form action="/api/register" method="post" class="form" id="form-register">
-                <div class="form__error"></div>
                 <label for="username">
                     Username
                 </label>
-                <input id="username" type="text" name="username">
+                <input id="username" type="text" name="username" autocomplete="off">
                 <label for="password">
                     Password
                 </label>
-                <input id="password" type="password" name="password">
+                <input id="password" type="password" name="password" autocomplete="off">
                 <label for="password_repeat">
                     Ripeti Password
                 </label>
-                <input type="password" name="password_repeat" id="password_repeat">
+                <input type="password" name="password_repeat" id="password_repeat" autocomplete="off">
                 <button type="submit" class="btn" disabled>Registrati</button>
             </form>
         </main>
