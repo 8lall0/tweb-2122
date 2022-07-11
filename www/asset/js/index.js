@@ -43,4 +43,5 @@ const setLogged = () => {
 
 onCheck({
     onLogged: setLogged,
+    onError: () => {}
 })

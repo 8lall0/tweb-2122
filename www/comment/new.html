@@ -21,10 +21,9 @@
         <main class="form-container post-new">
             <h2>Inserisci nuovo commento</h2>
             <form action="/api/comment" method="post" class="form" id="new-comment">
-                <label for="content">
-                    Testo
+                <label>
+                    <textarea id="content" name="content"></textarea>
                 </label>
-                <textarea id="content" name="content"></textarea>
                 <input type="hidden" name="postId">
                 <button type="submit" class="btn" disabled>Salva</button>
             </form>

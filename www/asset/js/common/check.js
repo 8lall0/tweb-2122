@@ -1,6 +1,8 @@
 import {status} from "./status.js";
 
 const onCheck = (conf) => {
+    const onError = conf.onError ?? null
+
     fetch('/api/checkLogin', {
         method: 'GET',
     }).then(status)
@@ -24,9 +26,10 @@ const onCheck = (conf) => {
         document.querySelectorAll('.show-if-not-logged').forEach(el => {
             el.classList.remove('hidden')
         })
-        if (conf.onError) {
-            conf.onError(response)
+        if (onError !== null) {
+            onError(response)
         } else {
+            console.log('reload')
             window.location.replace('/')
         }
 

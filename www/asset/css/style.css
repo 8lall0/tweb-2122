@@ -14,6 +14,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  min-height: 100%;
+  overflow-y: auto;
 }
 
 .logged .show-if-logged,
@@ -127,9 +129,22 @@ body {
   background-color: green;
   color: white;
   padding: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 .header h1 {
-  margin: 0 0 15px 0;
+  margin: 0 0 5px 0;
+}
+@media only screen and (max-width: 600px) {
+  .header h1 {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .header h1 {
+    margin: 0 0 15px 0;
+  }
 }
 .header h1 a {
   text-decoration: none;
@@ -142,8 +157,18 @@ body {
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  min-height: 22px;
+  align-items: flex-end;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
+}
+@media only screen and (min-width: 600px) {
+  .menu {
+    font-size: 16px;
+    min-height: 22px;
+    flex-direction: row;
+    gap: 10px;
+  }
 }
 .menu a {
   text-decoration: none;
@@ -160,9 +185,14 @@ body {
 }
 
 .nav {
-  padding: 10px;
+  padding: 5px;
   display: flex;
   justify-content: center;
+}
+@media only screen and (min-width: 600px) {
+  .nav {
+    padding: 10px;
+  }
 }
 
 .post-list {
