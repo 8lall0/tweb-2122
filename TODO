@@ -1,8 +1,5 @@
 Da intendersi, se non specificato, BE e FE
  - Relazione
- - Pulizia utenti, commenti, post
- - Creazione utenti, commenti e post di esempio
- - Footer
 
  - Validazione Registrazione // FATTO
  - Validazione Nuovo/Modifica commento // FATTO
@@ -11,3 +8,7 @@ Da intendersi, se non specificato, BE e FE
  - Pagina 404 // FATTO
  - Miglioria di semplificazione: spostare il redirect onError della check nella funzione principale // FATTO
  - Controlla responsive // FATTO
+ - Pulizia utenti, commenti, post // FATTO
+ - Footer // FATTO
+
+ NB: creato amministratore - usr: admin, pwd: admin

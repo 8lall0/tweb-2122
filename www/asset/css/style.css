@@ -14,8 +14,10 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  min-height: 100%;
+  min-height: 100vh;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .logged .show-if-logged,
@@ -111,6 +113,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 15px;
+  min-height: 100%;
 }
 
 .wrapper-content {
@@ -355,6 +358,14 @@ body {
 .userlist li span {
   display: block;
   width: 100%;
+}
+
+.footer {
+  text-align: center;
+  background-color: green;
+  margin-top: auto;
+  color: white;
+  padding: 20px;
 }
 
 .presentation {
